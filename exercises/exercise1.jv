@@ -23,7 +23,7 @@ pipeline AirportPipeline {
             "Zeitzone" oftype text,
             "DST" oftype text,
             "Zeitzonen-Datenbank" oftype text,
-            "geo_punkt" oftype decimal
+            "geo_punkt" oftype decimal,
         ];
     }
     block AirportLoader oftype SQLiteLoader {
