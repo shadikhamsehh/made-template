@@ -36,9 +36,6 @@ pipeline AirportPipeline {
        -> AirportCSVInterpreter 
        -> AirportTableInterpreter
        -> AirportLoader;
-    
-    
-    
-    
+        
     
 }
