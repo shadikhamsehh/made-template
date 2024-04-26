@@ -28,7 +28,7 @@ pipeline AirportPipeline {
     }
     block AirportLoader oftype SQLiteLoader {
         table: "Airports";
-        file: "airports.sqlite";
+        file: "./airports.sqlite";
     }
 
     DataExtractor 
