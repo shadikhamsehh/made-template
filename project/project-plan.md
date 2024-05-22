@@ -1,43 +1,37 @@
 # Project Plan
 
 ## Title
-Relationship Between Agricultural Practices and Methane Emissions.
+Analyzing the Impact of Wave Energy Farms and Urban Air Quality on Climate Dynamics
 
 ## Main Question
 
-How do specific agricultural practices impact methane emissions globally, and what are the projected implications of these emissions on achieving the 1.5 °C climate stabilization target under different mitigation scenarios?
+How does the implementation of wave energy technology impact urban air quality, and what predictive models can be developed to forecast these effects on climate dynamics in urban settings?
 
 ## Description
 
-This project explores the connection between agricultural practices and methane emissions, significant contributors to global climate change. By examining various farming methods and their impact on methane output, the study aims to assess the potential of different mitigation strategies to meet the 1.5 °C climate stabilization target.
+This project aims to analyze the correlation between renewable energy sources, specifically wave energy farms, and changes in urban air quality. Utilizing data from the Large-scale Wave Energy Farm and Beijing Multi-Site Air Quality datasets, this study will explore how shifts towards renewable energy in coastal regions could potentially affect urban air pollution levels.
 
-The findings will offer valuable insights for policymakers and agricultural stakeholders, guiding the development of strategies that effectively reduce methane emissions and align with global climate goals. Ultimately, the study seeks to bridge the gap between agricultural practices and environmental impact, promoting sustainable farming that supports both agricultural productivity and climate health.
+The ultimate objective is to develop predictive models that forecast air quality changes resulting from increased adoption of wave energy technology.
+
 
 ## Datasources
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: Agricultural non-CO2 emission reduction potential in the context of the 1.5 °C target
-* Metadata URL: https://data.europa.eu/data/datasets/5a06cad1-6c12-4d17-b008-4b58956ec3d8?locale=en
-* Data URL: https://datam.jrc.ec.europa.eu/datam/perm/od/dfe58f9f-0609-4cac-a139-efff80eecf83
+### Datasource1:  Large-scale Wave Energy Farm
+* Metadata URL: https://archive.ics.uci.edu/dataset/882/large-scale+wave+energy+farm
+* Data URL: https://archive.ics.uci.edu/static/public/882/large-scale+wave+energy+farm.zip
 * Data Type: CSV
 
-This dataset examines the role of agricultural practices in global methane and nitrous oxide emissions, which constitute approximately 10-12% of all anthropogenic GHG emissions. It focuses on the potential impacts of these emissions on meeting the 1.5 °C climate stabilization target, exploring the effectiveness of emission reduction technologies and changes in farming practices. Key findings indicate significant potential for emission reductions through advancements in livestock management and combined dietary shifts, aiming for substantial decreases in GHGs by 2050.
-
-### Datasource2: EDGAR v6.0 Greenhouse Gas Emissions
-* Metadata URL: https://data.europa.eu/data/datasets/edgar-v6-0-greenhouse-gas-emissions?locale=en
-* Data URL: https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/EDGAR/datasets/v60_GHG
-* Data Type: Excel XLS
-
-EDGAR v6.0 catalogues emissions of major greenhouse gases (CO2, CH4, N2O, and F-gases) across different sectors and countries. It details both fossil and biogenic CO2 sources but excludes emissions from large-scale biomass burning and LULUCF activities. The dataset incorporates comprehensive activity data updated to 2018, including energy balances from the IEA and agricultural data from the FAO, enhanced with recent global industry statistics. Notable updates include refined CO2 emission factors for coal mining and new shipping emissions profiles.
+This dataset encompasses data on configurations and energy outputs of wave energy converters at different scales and environmental conditions. It includes details such as the arrangement of converters, the power output of individual units, and the total power output of farms, essential for understanding and modeling the efficiency and environmental impact of wave energy farms.
 
 
-### Datasource3: Methane’s contribution to agricultural emissions and climate change
-* Metadata URL: https://data.europa.eu/data/datasets/65a20d8d-f110-40a4-8548-7b44e4d4e1bb?locale=en
-* Data URL: https://datam.jrc.ec.europa.eu/datam/perm/dataset/e9e38173-95b8-4bce-a3e6-fcf21edcd191
+### Datasource2: Beijing Multi-Site Air Quality Data
+* Metadata URL: https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data
+* Data URL: https://archive.ics.uci.edu/static/public/501/beijing+multi+site+air+quality+data.zip
 * Data Type: CSV
 
-Owing to its short atmospheric life, methane’s contribution to agricultural emissions and climate change may vary substantially depending on the temporal scale considered. Based on projections from three agricultural economic models, this study reveals how different appreciations of methane’s global warming potential may affect the cost-effectiveness of carbon pricing and low-meat diets.
+This dataset records hourly measurements of various air pollutants such as PM2.5, PM10, SO2, NO2, and O3 from multiple monitoring stations across Beijing. Additionally, it includes meteorological data such as temperature and humidity, offering a comprehensive view of the factors influencing urban air quality.
 
 
 ## Work Packages
