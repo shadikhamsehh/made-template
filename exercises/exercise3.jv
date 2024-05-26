@@ -9,8 +9,8 @@ pipeline GoodsTransportPipeline {
     }
 
     block GoodsTextRangeSelector oftype TextRangeSelector {
-        lineFrom: 9;
-        lineTo: 41336; 
+        lineFrom: 8;
+        lineTo: 41409;  
     }
 
     block GoodsCSVInterpreter oftype CSVInterpreter {
@@ -55,11 +55,8 @@ pipeline GoodsTransportPipeline {
         -> GoodsLoader;
 }
 
-// Constraints and value types definition
-constraint PositiveRange oftype RangeConstraint {
-    lowerBound: 0;
-    lowerBoundInclusive: false;
-}
+constraint PositiveRange on decimal:
+        value >= 0;
 
 valuetype PositiveInteger oftype integer {
     constraints: [PositiveRange];
