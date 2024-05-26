@@ -7,9 +7,9 @@ pipeline GoodsTransportPipeline {
     block GoodsTextFileInterpreter oftype TextFileInterpreter {
         encoding: "latin3";
     }
+
     block GoodsTextRangeSelector oftype TextRangeSelector {
         lineFrom: 9;
-        
     }
 
     block GoodsCSVInterpreter oftype CSVInterpreter {
@@ -41,7 +41,7 @@ pipeline GoodsTransportPipeline {
 
     block GoodsLoader oftype SQLiteLoader {
         table: "goods";
-        file: "./goodsTransportedByTrain.sqlite";
+        file: "goodsTransportedByTrain.sqlite";
     }
 
     GoodsExtractor
@@ -53,7 +53,6 @@ pipeline GoodsTransportPipeline {
         -> GoodsTableInterpreter
         -> GoodsLoader;
 }
-
 
 constraint PositiveRange oftype RangeConstraint {
     lowerBound: 0;
