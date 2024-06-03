@@ -26,7 +26,7 @@ The ultimate objective is to develop predictive models that forecast air quality
 This dataset records hourly measurements of various air pollutants such as PM2.5, PM10, SO2, NO2, and O3 from multiple monitoring stations across Beijing. Additionally, it includes meteorological data such as temperature and humidity, offering a comprehensive view of the factors influencing urban air quality.
 
 
-### Datasource2:  European Air Quality Dataset
+### Datasource2:  Inorganic gases-2017
 * Metadata URL: https://data.europa.eu/data/datasets/jrc-abcis-ig-2017?locale=en
 * Data URL: https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/ABCIS/InorganicGases/Ver2017-01-01/InorganicGases_2017.csv
 * Data Type: CSV
