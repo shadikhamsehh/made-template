@@ -1,5 +1,3 @@
-// Exercise 4 of MADE at FAU
-// Define the pipeline named MoWeStaTemperaturePipeline
 pipeline MoWeStaTemperaturePipeline {
 
     block MoWeStaExtractor oftype HttpExtractor {
@@ -42,9 +40,9 @@ pipeline MoWeStaTemperaturePipeline {
             "id" oftype PositiveInteger,
             "producer" oftype text,
             "model" oftype text,
-            "month" oftype text, 
-            "temperature" oftype decimal,
-            "battery_temperature" oftype decimal
+            "month" oftype text,
+            "temperature" oftype FahrenheitDecimal,
+            "battery_temperature" oftype FahrenheitDecimal
         ];
     }
 
@@ -64,7 +62,7 @@ pipeline MoWeStaTemperaturePipeline {
         table: "temperatures";
         file: "./temperatures.sqlite";
     }
-   
+
     MoWeStaExtractor
         -> MoWeStaUnzipper
         -> MoWeStaFilePicker
@@ -79,17 +77,21 @@ pipeline MoWeStaTemperaturePipeline {
         -> MoWeStaDataLoader;
 }
 
-    transform CelsiusToFahrenheit {
-        from Celsius oftype decimal;
-        to Fahrenheit oftype decimal;
-        Fahrenheit: (Celsius * 9/5) + 32;
-    }
+// Define the transformation rule for converting Celsius to Fahrenheit
+transform CelsiusToFahrenheit {
+    from Celsius oftype decimal;
+    to Fahrenheit oftype decimal;
+    Fahrenheit: (Celsius * 9/5) + 32;
+}
 
-    constraint PositiveRange on decimal:
-        value >= 0;
-
-    valuetype PositiveInteger oftype integer {
+valuetype FahrenheitDecimal oftype decimal {
     constraints: [PositiveRange];
 }
 
-  
+constraint PositiveRange on decimal:
+        value >= 0;
+
+valuetype PositiveInteger oftype integer {
+    constraints: [PositiveRange];
+}
+
