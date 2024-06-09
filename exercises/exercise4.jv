@@ -40,9 +40,9 @@ pipeline MoWeStaTemperaturePipeline {
             "id" oftype PositiveInteger,
             "producer" oftype text,
             "model" oftype text,
-            "month" oftype text,
-            "temperature" oftype FahrenheitDecimal,
-            "battery_temperature" oftype FahrenheitDecimal
+            "month" oftype PositiveInteger, 
+            "temperature" oftype decimal,
+            "battery_temperature" oftype decimal
         ];
     }
 
@@ -62,7 +62,7 @@ pipeline MoWeStaTemperaturePipeline {
         table: "temperatures";
         file: "./temperatures.sqlite";
     }
-
+   
     MoWeStaExtractor
         -> MoWeStaUnzipper
         -> MoWeStaFilePicker
@@ -77,21 +77,17 @@ pipeline MoWeStaTemperaturePipeline {
         -> MoWeStaDataLoader;
 }
 
-// Define the transformation rule for converting Celsius to Fahrenheit
-transform CelsiusToFahrenheit {
-    from Celsius oftype decimal;
-    to Fahrenheit oftype decimal;
-    Fahrenheit: (Celsius * 9/5) + 32;
-}
+    transform CelsiusToFahrenheit {
+        from Celsius oftype decimal;
+        to Fahrenheit oftype decimal;
+        Fahrenheit: (Celsius * 9/5) + 32;
+    }
 
-valuetype FahrenheitDecimal oftype decimal {
-    constraints: [PositiveRange];
-}
-
-constraint PositiveRange on decimal:
+    constraint PositiveRange on decimal:
         value >= 0;
 
-valuetype PositiveInteger oftype integer {
+    valuetype PositiveInteger oftype integer {
     constraints: [PositiveRange];
 }
 
+  
