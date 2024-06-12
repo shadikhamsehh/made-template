@@ -1,7 +1,7 @@
 
 #!/bin/bash
 # Define the test script name
-TEST_SCRIPT="test_pipeline.py"
+TEST_SCRIPT="test.py"
 
 # Define the data directory
 DATA_DIR="../data"

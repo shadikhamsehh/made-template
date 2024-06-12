@@ -1,0 +1,12 @@
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): archive.ics.uci.edu:443
+urllib3.connectionpool - DEBUG - https://archive.ics.uci.edu:443 "GET /static/public/501/beijing+multi+site+air+quality+data.zip HTTP/1.1" 200 None
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): jeodpp.jrc.ec.europa.eu:443
+urllib3.connectionpool - DEBUG - https://jeodpp.jrc.ec.europa.eu:443 "GET /ftp/jrc-opendata/ABCIS/InorganicGases/Ver2017-01-01/InorganicGases_2017.csv HTTP/1.1" 200 4013605
+root - INFO - Checking existence of ../data/AirQuality.db for AirQuality database
+root - INFO - Checking existence of ../data/InorganicGases.db for InorganicGases database
+root - INFO - Columns in test: ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+root - INFO - All expected columns are present in test.
+root - INFO - Columns in data: ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+root - INFO - All expected columns are present in data.
+root - INFO - Columns in InorganicGases_2017: ['DateTime', 'NO', 'NO2', 'NOx', 'SO2', 'O3', 'CO_ppm']
+root - INFO - All expected columns are present in InorganicGases_2017.
