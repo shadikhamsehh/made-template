@@ -34,10 +34,7 @@ valuetype GeographicCoordinate oftype decimal {
     constraints: [ GeographicCoordinateConstraint ];
 }
 
-constraint GeographicCoordinateConstraint oftype RangeConstraint {
-    upperBound: 90;
-    lowerBound: -90;
-}
+
 
 
 block GTFSTableInterpreter oftype TableInterpreter {
@@ -67,4 +64,7 @@ GTFSZipExtractor
 }
 constraint SpecificZone on integer:
     value == 1645;
-      
+    
+constraint GeographicCoordinateConstraint on decimal:
+    value >= -90 and value <= 90;
+     
