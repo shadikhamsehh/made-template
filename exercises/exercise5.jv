@@ -16,13 +16,17 @@ block StopFilePicker oftype FilePicker {
 
 
 block GTFSTextFileInterpreter oftype TextFileInterpreter { 
-    encoding:"latin3";
+    encoding:"utf8";
 }
 
 block CSVInterpreter oftype CSVInterpreter {
     delimiter: ",";
     enclosing: '"';   
 }
+
+block GTFSColumnRemove oftype ColumnDeleter {
+        delete: [column B, column D, column H, column I, column J, column K, column L];
+    }
 
  
 valuetype zoneid oftype integer {
@@ -33,9 +37,6 @@ valuetype zoneid oftype integer {
 valuetype GeographicCoordinate oftype decimal {
     constraints: [ GeographicCoordinateConstraint ];
 }
-
-
-
 
 block GTFSTableInterpreter oftype TableInterpreter {
     header: true;
@@ -58,13 +59,14 @@ GTFSZipExtractor
     -> StopFilePicker
     -> GTFSTextFileInterpreter
     -> CSVInterpreter
+    -> GTFSColumnRemove
     -> GTFSTableInterpreter
     -> GTFSDataLoader;
 
 }
 constraint SpecificZone on integer:
     value == 1645;
-    
+
 constraint GeographicCoordinateConstraint on decimal:
     value >= -90 and value <= 90;
      
