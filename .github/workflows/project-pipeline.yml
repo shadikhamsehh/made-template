@@ -1,0 +1,26 @@
+name: Project Pipeline
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install -r project/requirements.txt
+
+      # Execute tests.sh script
+      - name: Run Tests
+        run: bash tests.sh
