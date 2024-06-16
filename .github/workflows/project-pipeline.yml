@@ -23,4 +23,4 @@ jobs:
 
       # Execute tests.sh script
       - name: Run Tests
-        run: bash tests.sh
+        run: bash project/tests.sh
