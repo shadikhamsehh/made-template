@@ -1,7 +1,7 @@
 
 #!/bin/bash
 # Define the test script name
-TEST_SCRIPT="test.py"
+TEST_SCRIPT="project/test.py"
 
 # Define the data directory
 DATA_DIR="../data"
