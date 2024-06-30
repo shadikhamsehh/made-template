@@ -1,9 +1,8 @@
 import os
 import unittest
 import logging
-import pandas as pd
 import sqlite3
-from pipeline import  download_csv, combine_and_process_csv_files, save_to_sqlite, main
+from pipeline import main
 
 logging.basicConfig(level=logging.DEBUG, filename='test_pipeline.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(message)s')
@@ -12,8 +11,11 @@ class DataPipelineTests(unittest.TestCase):
     def setUp(self):
         self.test_directory = './test_environment'
         os.makedirs(self.test_directory, exist_ok=True)
-        self.db_air_quality = os.path.join('../data', 'BeijingAirQuality.db')
-        self.db_inorganic_gases = os.path.join('../data', 'InorganicGases.db')
+        base_dir = os.getenv('GITHUB_WORKSPACE', os.path.abspath(os.path.join(__file__, "../..")))
+        self.db_air_quality = os.path.join(base_dir, 'data', 'BeijingAirQuality.db')
+        self.db_inorganic_gases = os.path.join(base_dir, 'data', 'InorganicGases.db')
+        print(f"Expected path for BeijingAirQuality.db: {self.db_air_quality}")
+        print(f"Expected path for InorganicGases.db: {self.db_inorganic_gases}")
 
     def tearDown(self):
         import shutil
@@ -21,18 +23,17 @@ class DataPipelineTests(unittest.TestCase):
             shutil.rmtree(self.test_directory)
 
     def test_full_pipeline_execution(self):
-        main()  
+        main()
 
-        # Check if the AirQuality database is created
+        # Check if the BeijingAirQuality database is created
         self.check_database_exists(self.db_air_quality, 'BeijingAirQuality database')
 
         # Check if the InorganicGases database is created
         self.check_database_exists(self.db_inorganic_gases, 'InorganicGases database')
 
-        # Verify the structure of tables in the AirQuality database
+        # Verify the structure of tables in the BeijingAirQuality database
         self.verify_table_structure(self.db_air_quality, 'combined_data', 
-                                     ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3', 'TEMP', 'PRES', 'DEWP', 'RAIN', 'wd', 'WSPM', 'station', 'datetime'])
-
+                                    ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3', 'TEMP', 'PRES', 'DEWP', 'RAIN', 'wd', 'WSPM', 'station', 'datetime'])
 
         # Verify the structure of tables in the InorganicGases database
         self.verify_table_structure(self.db_inorganic_gases, 'data_2017', 
@@ -62,5 +63,3 @@ class DataPipelineTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-

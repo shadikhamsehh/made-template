@@ -3,3 +3,4 @@ numpy
 sqlalchemy
 requests
 python-dotenv
+requests
