@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEST_SCRIPT="project/test.py"
+TEST_SCRIPT="../project/test.py"
 
 if [ ! -f "$TEST_SCRIPT" ]; then
     echo "Error: Test script $TEST_SCRIPT not found!"
