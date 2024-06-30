@@ -11,9 +11,11 @@ class DataPipelineTests(unittest.TestCase):
     def setUp(self):
         self.test_directory = os.path.abspath('./test_environment')
         os.makedirs(self.test_directory, exist_ok=True)
-        base_dir = os.path.abspath(os.path.join(__file__, "../.."))  # Adjust relative navigation based on actual project structure
+        base_dir = os.getenv('GITHUB_WORKSPACE', os.path.abspath(os.path.join(__file__, "../..")))  # Adjust relative navigation based on actual project structure
         self.db_air_quality = os.path.join(base_dir, 'data', 'BeijingAirQuality.db')
         self.db_inorganic_gases = os.path.join(base_dir, 'data', 'InorganicGases.db')
+        print(f"Expected path for BeijingAirQuality.db: {self.db_air_quality}")
+        print(f"Expected path for InorganicGases.db: {self.db_inorganic_gases}")
 
     def tearDown(self):
         import shutil
@@ -21,7 +23,7 @@ class DataPipelineTests(unittest.TestCase):
             shutil.rmtree(self.test_directory)
 
     def test_full_pipeline_execution(self):
-        main()  
+        main()
 
         # Check if the BeijingAirQuality database is created
         self.check_database_exists(self.db_air_quality, 'BeijingAirQuality database')

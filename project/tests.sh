@@ -1,10 +1,6 @@
 #!/bin/bash
 # Define the test script name
-TEST_SCRIPT="project/test.py"
-
-# Define the data directory
-DATA_DIR="data"
-
+TEST_SCRIPT="../project/test.py"
 
 if [ ! -f "$TEST_SCRIPT" ]; then
     echo "Error: Test script $TEST_SCRIPT not found!"
