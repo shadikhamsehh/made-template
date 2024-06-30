@@ -46,6 +46,11 @@ class DataPipelineTests(unittest.TestCase):
             with ZipFile(prsa_zip_path, 'r') as zip_ref:
                 zip_ref.extractall(self.data_directory)
             print(f"Unzipped {prsa_zip_path} to {self.data_directory}")
+
+            # List contents of the extracted directory
+            extracted_files = os.listdir(prsa_data_directory)
+            print(f"Contents of {prsa_data_directory}: {extracted_files}")
+
         else:
             print(f"PRSA data directory already exists at {prsa_data_directory}")
 
@@ -55,16 +60,14 @@ class DataPipelineTests(unittest.TestCase):
             'PRSA_Data_Changping_20130301-20170228.csv',
             'PRSA_Data_Dingling_20130301-20170228.csv',
             'PRSA_Data_Dongsi_20130301-20170228.csv',
-            'PRSA_Data_Guanyuan_20130301-20170228.csv',
             'PRSA_Data_Gucheng_20130301-20170228.csv',
+            'PRSA_Data_Guanyuan_20130301-20170228.csv',
             'PRSA_Data_Huairou_20130301-20170228.csv',
             'PRSA_Data_Nongzhanguan_20130301-20170228.csv',
             'PRSA_Data_Shunyi_20130301-20170228.csv',
             'PRSA_Data_Tiantan_20130301-20170228.csv',
             'PRSA_Data_Wanliu_20130301-20170228.csv',
             'PRSA_Data_Wanshouxigong_20130301-20170228.csv'
-            
-            
         ]
         for file_name in expected_files:
             file_path = os.path.join(prsa_data_directory, file_name)
