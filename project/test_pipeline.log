@@ -1,5 +1,3 @@
-urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): archive.ics.uci.edu:443
-urllib3.connectionpool - DEBUG - https://archive.ics.uci.edu:443 "GET /static/public/501/beijing+multi+site+air+quality+data.zip HTTP/1.1" 200 None
 urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): jeodpp.jrc.ec.europa.eu:443
 urllib3.connectionpool - DEBUG - https://jeodpp.jrc.ec.europa.eu:443 "GET /ftp/jrc-opendata/ABCIS/InorganicGases/Ver2017-01-01/InorganicGases_2017.csv HTTP/1.1" 200 4013605
 root - INFO - Checking existence of /Users/shadikhamseh/Desktop/Uni/made-template/data/BeijingAirQuality.db for BeijingAirQuality database

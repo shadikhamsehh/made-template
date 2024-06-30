@@ -49,6 +49,27 @@ class DataPipelineTests(unittest.TestCase):
         else:
             print(f"PRSA data directory already exists at {prsa_data_directory}")
 
+        # Verify the expected files exist
+        expected_files = [
+            'PRSA_Data_Aotizhongxin_20130301-20170228.csv',
+            'PRSA_Data_Changping_20130301-20170228.csv',
+            'PRSA_Data_Dingling_20130301-20170228.csv',
+            'PRSA_Data_Dongsi_20130301-20170228.csv',
+            'PRSA_Data_Guanyuan_20130301-20170228.csv',
+            'PRSA_Data_Gucheng_20130301-20170228.csv',
+            'PRSA_Data_Huairou_20130301-20170228.csv',
+            'PRSA_Data_Nongzhanguan_20130301-20170228.csv',
+            'PRSA_Data_Shunyi_20130301-20170228.csv',
+            'PRSA_Data_Tiantan_20130301-20170228.csv',
+            'PRSA_Data_Wanliu_20130301-20170228.csv',
+            'PRSA_Data_Wanshouxigong_20130301-20170228.csv'
+            
+            
+        ]
+        for file_name in expected_files:
+            file_path = os.path.join(prsa_data_directory, file_name)
+            self.assertTrue(os.path.exists(file_path), f"Expected file {file_path} does not exist.")
+
     def test_full_pipeline_execution(self):
         main()
 
