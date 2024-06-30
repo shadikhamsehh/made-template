@@ -2,7 +2,7 @@ import os
 import unittest
 import logging
 import sqlite3
-from pipeline import main
+from pipeline import main, download_csv, combine_and_process_csv_files, save_to_sqlite
 
 logging.basicConfig(level=logging.DEBUG, filename='test_pipeline.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(message)s')
@@ -12,8 +12,10 @@ class DataPipelineTests(unittest.TestCase):
         self.test_directory = './test_environment'
         os.makedirs(self.test_directory, exist_ok=True)
         base_dir = os.getenv('GITHUB_WORKSPACE', os.path.abspath(os.path.join(__file__, "../..")))
-        self.db_air_quality = os.path.join(base_dir, 'data', 'BeijingAirQuality.db')
-        self.db_inorganic_gases = os.path.join(base_dir, 'data', 'InorganicGases.db')
+        self.data_directory = os.path.join(base_dir, 'data')
+        os.makedirs(self.data_directory, exist_ok=True)
+        self.db_air_quality = os.path.join(self.data_directory, 'BeijingAirQuality.db')
+        self.db_inorganic_gases = os.path.join(self.data_directory, 'InorganicGases.db')
         print(f"Expected path for BeijingAirQuality.db: {self.db_air_quality}")
         print(f"Expected path for InorganicGases.db: {self.db_inorganic_gases}")
 
