@@ -1,13 +1,11 @@
 import os
 import unittest
 import logging
-import pandas as pd
 import sqlite3
 from pipeline import main
 
 logging.basicConfig(level=logging.DEBUG, filename='test_pipeline.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(message)s')
-
 
 class DataPipelineTests(unittest.TestCase):
     def setUp(self):
@@ -63,7 +61,3 @@ class DataPipelineTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-
