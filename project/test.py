@@ -2,6 +2,7 @@ import os
 import unittest
 import logging
 import sqlite3
+import requests
 from zipfile import ZipFile
 from pipeline import main
 
@@ -20,25 +21,31 @@ class DataPipelineTests(unittest.TestCase):
         print(f"Expected path for BeijingAirQuality.db: {self.db_air_quality}")
         print(f"Expected path for InorganicGases.db: {self.db_inorganic_gases}")
 
-        # Ensure the PRSA_Data_20130301-20170228 folder is unzipped
-        self.unzip_prsa_data()
+        # Ensure the PRSA_Data_20130301-20170228.zip file is downloaded and unzipped
+        self.download_and_unzip_prsa_data()
 
     def tearDown(self):
         import shutil
         if os.path.exists(self.test_directory):
             shutil.rmtree(self.test_directory)
 
-    def unzip_prsa_data(self):
+    def download_and_unzip_prsa_data(self):
+        prsa_zip_url = 'https://archive.ics.uci.edu/static/public/501/beijing+multi+site+air+quality+data.zip'
         prsa_zip_path = os.path.join(self.data_directory, 'PRSA_Data_20130301-20170228.zip')
         prsa_data_directory = os.path.join(self.data_directory, 'PRSA_Data_20130301-20170228')
 
+        if not os.path.exists(prsa_zip_path):
+            response = requests.get(prsa_zip_url, headers={
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+            })
+            with open(prsa_zip_path, 'wb') as outFile:
+                outFile.write(response.content)
+            print(f"Downloaded PRSA zip to {prsa_zip_path}")
+
         if not os.path.exists(prsa_data_directory):
-            if os.path.exists(prsa_zip_path):
-                with ZipFile(prsa_zip_path, 'r') as zip_ref:
-                    zip_ref.extractall(self.data_directory)
-                print(f"Unzipped {prsa_zip_path} to {self.data_directory}")
-            else:
-                print(f"PRSA zip file not found at {prsa_zip_path}")
+            with ZipFile(prsa_zip_path, 'r') as zip_ref:
+                zip_ref.extractall(self.data_directory)
+            print(f"Unzipped {prsa_zip_path} to {self.data_directory}")
         else:
             print(f"PRSA data directory already exists at {prsa_data_directory}")
 
