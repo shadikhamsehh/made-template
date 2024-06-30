@@ -51,7 +51,6 @@ def save_to_sqlite(df, db_name, table_name, directory):
         try:
             os.makedirs(directory, exist_ok=True)
             db_path = os.path.join(directory, f"{db_name}.db")
-            print(f"Saving database to: {db_path}")
             engine = create_engine(f'sqlite:///{db_path}')
             df.to_sql(table_name, con=engine, if_exists='replace', index=False)
             print(f"Saved data to SQLite database '{db_name}' in table '{table_name}'.")
@@ -61,14 +60,11 @@ def save_to_sqlite(df, db_name, table_name, directory):
         print("No data to save to database.")
 
 def main():
-    base_dir = os.getenv('GITHUB_WORKSPACE', os.path.abspath(os.path.dirname(__file__)))
-    data_directory = os.path.join(base_dir, 'data')
+    data_directory = '../data'
     os.makedirs(data_directory, exist_ok=True)
-    print(f"Data directory: {data_directory}")
 
     # Process Beijing Air Quality Data
     beijing_data_directory = os.path.join(data_directory, 'PRSA_Data_20130301-20170228')
-    print(f"Beijing data directory: {beijing_data_directory}")
     all_beijing_csv_files = [os.path.join(root, file) for root, dirs, files in os.walk(beijing_data_directory) for file in files if file.endswith('.csv')]
     beijing_df = combine_and_process_csv_files(all_beijing_csv_files)
     if not beijing_df.empty:
@@ -85,3 +81,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
