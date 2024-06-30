@@ -2,7 +2,7 @@ import os
 import unittest
 import logging
 import sqlite3
-from pipeline import main, download_csv, combine_and_process_csv_files, save_to_sqlite
+from pipeline import main
 
 logging.basicConfig(level=logging.DEBUG, filename='test_pipeline.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(message)s')
