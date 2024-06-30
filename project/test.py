@@ -47,16 +47,16 @@ class DataPipelineTests(unittest.TestCase):
                 zip_ref.extractall(self.data_directory)
             print(f"Unzipped {prsa_zip_path} to {self.data_directory}")
 
-            # Check if the expected directory exists, or if it is nested
+            # Check if there is a nested zip file
+            nested_zip_path = os.path.join(self.data_directory, 'PRSA2017_Data_20130301-20170228.zip')
+            if os.path.exists(nested_zip_path):
+                with ZipFile(nested_zip_path, 'r') as zip_ref:
+                    zip_ref.extractall(prsa_data_directory)
+                print(f"Unzipped nested zip {nested_zip_path} to {prsa_data_directory}")
+
+            # Verify the expected directory exists
             if not os.path.exists(prsa_data_directory):
-                # Sometimes the extracted files might be nested inside another directory
-                nested_dirs = os.listdir(self.data_directory)
-                print(f"Nested directories after unzipping: {nested_dirs}")
-                for dir_name in nested_dirs:
-                    if os.path.isdir(os.path.join(self.data_directory, dir_name)):
-                        prsa_data_directory = os.path.join(self.data_directory, dir_name)
-                        break
-            print(f"PRSA data directory set to: {prsa_data_directory}")
+                raise FileNotFoundError(f"Expected data directory {prsa_data_directory} does not exist after extraction.")
 
             # List contents of the extracted directory
             extracted_files = os.listdir(prsa_data_directory)
