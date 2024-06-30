@@ -8,12 +8,14 @@ from pipeline import main
 logging.basicConfig(level=logging.DEBUG, filename='test_pipeline.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(message)s')
 
+
 class DataPipelineTests(unittest.TestCase):
     def setUp(self):
-        self.test_directory = './test_environment'
+        self.test_directory = os.path.abspath('./test_environment')
         os.makedirs(self.test_directory, exist_ok=True)
-        self.db_air_quality = os.path.join('../data', 'BeijingAirQuality.db')  # Corrected database file name
-        self.db_inorganic_gases = os.path.join('../data', 'InorganicGases.db')
+        base_dir = os.path.abspath(os.path.join(__file__, "../.."))  # Adjust relative navigation based on actual project structure
+        self.db_air_quality = os.path.join(base_dir, 'data', 'BeijingAirQuality.db')
+        self.db_inorganic_gases = os.path.join(base_dir, 'data', 'InorganicGases.db')
 
     def tearDown(self):
         import shutil

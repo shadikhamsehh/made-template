@@ -1,7 +1,7 @@
 urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): jeodpp.jrc.ec.europa.eu:443
 urllib3.connectionpool - DEBUG - https://jeodpp.jrc.ec.europa.eu:443 "GET /ftp/jrc-opendata/ABCIS/InorganicGases/Ver2017-01-01/InorganicGases_2017.csv HTTP/1.1" 200 4013605
-root - INFO - Checking existence of ../data/BeijingAirQuality.db for BeijingAirQuality database
-root - INFO - Checking existence of ../data/InorganicGases.db for InorganicGases database
+root - INFO - Checking existence of /Users/shadikhamseh/Desktop/Uni/made-template/data/BeijingAirQuality.db for BeijingAirQuality database
+root - INFO - Checking existence of /Users/shadikhamseh/Desktop/Uni/made-template/data/InorganicGases.db for InorganicGases database
 root - INFO - Columns in combined_data: ['No', 'PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3', 'TEMP', 'PRES', 'DEWP', 'RAIN', 'wd', 'WSPM', 'station', 'datetime']
 root - INFO - All expected columns are present in combined_data.
 root - INFO - Columns in data_2017: ['DateTime', 'NO', 'NO2', 'NOx', 'SO2', 'O3', 'CO_ppm']
